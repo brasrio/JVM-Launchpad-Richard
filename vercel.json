@@ -12,6 +12,13 @@
   ],
   "routes": [
     {
+      "src": "/assets/(.*\\.png)",
+      "dest": "/public/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
       "src": "/css/(.*)",
       "dest": "/public/css/$1"
     },
