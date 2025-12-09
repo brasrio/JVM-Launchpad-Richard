@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - JVM Launchpad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Faça login na sua conta JVM Launchpad">
+    <meta name="theme-color" content="#e63946">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Login - JVM Launchpad">
+    <meta property="og:description" content="Acesse sua conta JVM Launchpad">
+    <meta property="og:image" content="/assets/og-image.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page page--auth">
+    <div class="page__background">
+        <div class="page__grid"></div>
+        <div class="page__glow page__glow--top"></div>
+        <div class="page__glow page__glow--bottom"></div>
+    </div>
+
+    <header class="header header--minimal">
+        <div class="header__container">
+            <a href="/" class="header__logo">
+                <span class="header__logo-icon">◆</span>
+                <span class="header__logo-text">JVM<span class="header__logo-accent">Launchpad</span></span>
+            </a>
+        </div>
+    </header>
+
+    <main class="main main--centered">
+        <div class="auth">
+            <div class="auth__card">
+                <div class="auth__header">
+                    <h1 class="auth__title">Entrar</h1>
+                    <p class="auth__subtitle">Acesse sua conta para continuar</p>
+                </div>
+
+                <form class="form" id="loginForm">
+                    <div class="form__group">
+                        <label class="form__label" for="email">Email</label>
+                        <div class="form__input-wrapper">
+                            <span class="form__icon">✉</span>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form__input" 
+                                placeholder="seu@email.com"
+                                required
+                                autocomplete="email"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form__group">
+                        <label class="form__label" for="password">Senha</label>
+                        <div class="form__input-wrapper">
+                            <span class="form__icon">🔒</span>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form__input" 
+                                placeholder="••••••••"
+                                required
+                                autocomplete="current-password"
+                            >
+                            <button type="button" class="form__toggle-password" aria-label="Mostrar senha">
+                                👁
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form__alert form__alert--error" id="errorAlert" style="display: none;">
+                        <span class="form__alert-icon">⚠</span>
+                        <span class="form__alert-text" id="errorText"></span>
+                    </div>
+
+                    <div class="form__alert form__alert--success" id="successAlert" style="display: none;">
+                        <span class="form__alert-icon">✓</span>
+                        <span class="form__alert-text" id="successText"></span>
+                    </div>
+
+                    <button type="submit" class="button button--primary button--full" id="submitBtn">
+                        <span class="button__text">Entrar</span>
+                        <span class="button__loader" style="display: none;"></span>
+                    </button>
+                </form>
+
+                <div class="auth__footer">
+                    <p class="auth__footer-text">
+                        Não tem uma conta? 
+                        <a href="/register" class="auth__link">Cadastre-se</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
+

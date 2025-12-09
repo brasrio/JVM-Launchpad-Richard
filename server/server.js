@@ -1,0 +1,68 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const authRoutes = require('./routes/auth.routes');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Servir arquivos estáticos do frontend
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Rotas da API
+app.use('/api/auth', authRoutes);
+
+// Rota para página inicial
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+// Rota para login
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/login.html'));
+});
+
+// Rota para registro
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/register.html'));
+});
+
+// Rota para dashboard (área protegida)
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/dashboard.html'));
+});
+
+// Tratamento de erros
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ 
+        success: false, 
+        message: 'Erro interno do servidor' 
+    });
+});
+
+// Iniciar servidor (apenas quando executado diretamente, não no Vercel)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`
+    ╔═══════════════════════════════════════════╗
+    ║                                           ║
+    ║       🚀 JVM Launchpad Server 🚀          ║
+    ║                                           ║
+    ║   Servidor rodando na porta ${PORT}          ║
+    ║   http://localhost:${PORT}                   ║
+    ║                                           ║
+    ╚═══════════════════════════════════════════╝
+        `);
+    });
+}
+
+// Exportar para Vercel
+module.exports = app;
+

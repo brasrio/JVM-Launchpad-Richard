@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVM Launchpad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="JVM Launchpad - Plataforma de autenticação segura e minimalista">
+    <meta name="theme-color" content="#e63946">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JVM Launchpad">
+    <meta property="og:description" content="Plataforma de autenticação segura e minimalista. Gerencie seus acessos com rapidez e eficiência.">
+    <meta property="og:image" content="/assets/og-image.svg">
+    <meta property="og:url" content="/">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JVM Launchpad">
+    <meta name="twitter:description" content="Plataforma de autenticação segura e minimalista.">
+    <meta name="twitter:image" content="/assets/og-image.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page">
+    <div class="page__background">
+        <div class="page__grid"></div>
+        <div class="page__glow page__glow--top"></div>
+        <div class="page__glow page__glow--bottom"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__container">
+            <a href="/" class="header__logo">
+                <span class="header__logo-icon">◆</span>
+                <span class="header__logo-text">JVM<span class="header__logo-accent">Launchpad</span></span>
+            </a>
+            <nav class="header__nav">
+                <a href="/login" class="header__link">Login</a>
+                <a href="/register" class="header__link header__link--primary">Cadastrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <div class="hero__badge">
+                        <span class="hero__badge-dot"></span>
+                        Sistema Online
+                    </div>
+                    <h1 class="hero__title">
+                        <span class="hero__title-line">Bem-vindo ao</span>
+                        <span class="hero__title-line hero__title-line--accent">JVM Launchpad</span>
+                    </h1>
+                    <p class="hero__description">
+                        Plataforma de autenticação segura e minimalista. 
+                        Gerencie seus acessos com rapidez e eficiência.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="/register" class="button button--primary">
+                            <span class="button__text">Começar Agora</span>
+                            <span class="button__icon">→</span>
+                        </a>
+                        <a href="/login" class="button button--secondary">
+                            <span class="button__text">Fazer Login</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero__visual">
+                    <div class="hero__card">
+                        <div class="hero__card-header">
+                            <span class="hero__card-dot hero__card-dot--red"></span>
+                            <span class="hero__card-dot hero__card-dot--yellow"></span>
+                            <span class="hero__card-dot hero__card-dot--green"></span>
+                        </div>
+                        <div class="hero__card-content">
+                            <div class="hero__code">
+                                <span class="hero__code-line"><span class="hero__code-keyword">const</span> auth = <span class="hero__code-func">authenticate</span>();</span>
+                                <span class="hero__code-line"><span class="hero__code-keyword">if</span> (auth.<span class="hero__code-prop">success</span>) {</span>
+                                <span class="hero__code-line hero__code-line--indent"><span class="hero__code-func">launchpad</span>.<span class="hero__code-method">init</span>();</span>
+                                <span class="hero__code-line">}</span>
+                                <span class="hero__code-line hero__code-line--cursor">|</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="features__container">
+                <div class="feature">
+                    <div class="feature__icon">🔐</div>
+                    <h3 class="feature__title">Segurança</h3>
+                    <p class="feature__description">Senhas criptografadas com bcrypt e autenticação JWT</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">⚡</div>
+                    <h3 class="feature__title">Velocidade</h3>
+                    <p class="feature__description">API rápida e responsiva para melhor experiência</p>
+                </div>
+                <div class="feature">
+                    <div class="feature__icon">🎯</div>
+                    <h3 class="feature__title">Simplicidade</h3>
+                    <p class="feature__description">Interface limpa e intuitiva, fácil de usar</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">© 2024 JVM Launchpad. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+

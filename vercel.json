@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/login",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/register",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/(.*\\.(js|css|svg|png|jpg|ico))",
+      "dest": "public/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "server/server.js"
+    }
+  ]
+}
+
