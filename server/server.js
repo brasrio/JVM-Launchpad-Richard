@@ -38,6 +38,36 @@ app.get('/dashboard', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/dashboard.html'));
 });
 
+// Rota para perfil (área protegida)
+app.get('/profile', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/profile.html'));
+});
+
+// Rota para configurações (área protegida)
+app.get('/settings', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/settings.html'));
+});
+
+// Rota para sobre
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/about.html'));
+});
+
+// Rota para recuperação de senha
+app.get('/forgot-password', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/forgot-password.html'));
+});
+
+// Rota 404 - deve ser a última rota específica
+app.get('/404', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/404.html'));
+});
+
+// Rota catch-all para páginas não encontradas
+app.get('*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+});
+
 // Tratamento de erros
 app.use((err, req, res, next) => {
     console.error(err.stack);
