@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user.model');
+const emailService = require('../services/email.service');
 
 const AuthController = {
     /**
@@ -51,6 +52,19 @@ const AuthController = {
                 process.env.JWT_SECRET,
                 { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
             );
+
+            // Enviar email de boas-vindas (não bloqueia a resposta)
+            emailService.sendWelcomeEmail(newUser.email, newUser.name)
+                .then(result => {
+                    if (result.success) {
+                        console.log('✅ Email de boas-vindas enviado para:', newUser.email);
+                    } else {
+                        console.warn('⚠️  Falha ao enviar email de boas-vindas:', result.error);
+                    }
+                })
+                .catch(err => {
+                    console.error('❌ Erro ao enviar email de boas-vindas:', err);
+                });
 
             res.status(201).json({
                 success: true,

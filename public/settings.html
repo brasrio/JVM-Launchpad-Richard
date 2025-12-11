@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - JVM Launchpad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Configurações da conta JVM Launchpad">
+    <meta name="theme-color" content="#e63946">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page page--dashboard">
+    <div class="page__background">
+        <div class="page__grid"></div>
+        <div class="page__glow page__glow--top"></div>
+        <div class="page__glow page__glow--bottom"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__container">
+            <a href="/dashboard" class="header__logo">
+                <span class="header__logo-icon">◆</span>
+                <span class="header__logo-text">JVM<span class="header__logo-accent">Launchpad</span></span>
+            </a>
+            <nav class="header__nav">
+                <a href="/dashboard" class="header__link">Dashboard</a>
+                <a href="/profile" class="header__link">Perfil</a>
+                <a href="/settings" class="header__link header__link--primary">Configurações</a>
+                <button class="header__link header__link--logout" id="logoutBtn">Sair</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="settings">
+            <div class="settings__container">
+                <div class="settings__header">
+                    <h1 class="settings__title">
+                        <span class="settings__icon">⚙</span>
+                        Configurações
+                    </h1>
+                    <p class="settings__subtitle">Personalize sua experiência no JVM Launchpad</p>
+                </div>
+
+                <div class="settings__content">
+                    <!-- Aparência -->
+                    <div class="settings__section">
+                        <h2 class="settings__section-title">
+                            <span class="settings__section-icon">🎨</span>
+                            Aparência
+                        </h2>
+                        <div class="settings__options">
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Tema</h3>
+                                    <p class="settings__option-description">Escolha entre tema claro ou escuro</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="darkMode" checked>
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Modo Escuro</span>
+                                </div>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Animações</h3>
+                                    <p class="settings__option-description">Ative ou desative animações da interface</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="animations" checked>
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Ativado</span>
+                                </div>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Idioma</h3>
+                                    <p class="settings__option-description">Selecione o idioma da interface</p>
+                                </div>
+                                <select class="settings__select">
+                                    <option value="pt-BR" selected>Português (Brasil)</option>
+                                    <option value="en-US">English (US)</option>
+                                    <option value="es-ES">Español</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notificações -->
+                    <div class="settings__section">
+                        <h2 class="settings__section-title">
+                            <span class="settings__section-icon">🔔</span>
+                            Notificações
+                        </h2>
+                        <div class="settings__options">
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Notificações por Email</h3>
+                                    <p class="settings__option-description">Receba atualizações importantes por email</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="emailNotif" checked>
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Ativado</span>
+                                </div>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Notificações Push</h3>
+                                    <p class="settings__option-description">Receba notificações no navegador</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="pushNotif">
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Desativado</span>
+                                </div>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Alertas de Segurança</h3>
+                                    <p class="settings__option-description">Receba alertas sobre atividades suspeitas</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="securityAlerts" checked disabled>
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Obrigatório</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacidade -->
+                    <div class="settings__section">
+                        <h2 class="settings__section-title">
+                            <span class="settings__section-icon">🔐</span>
+                            Privacidade e Segurança
+                        </h2>
+                        <div class="settings__options">
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Perfil Público</h3>
+                                    <p class="settings__option-description">Permita que outros usuários vejam seu perfil</p>
+                                </div>
+                                <div class="settings__toggle">
+                                    <label class="toggle">
+                                        <input type="checkbox" class="toggle__input" id="publicProfile">
+                                        <span class="toggle__slider"></span>
+                                    </label>
+                                    <span class="settings__toggle-label">Privado</span>
+                                </div>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Sessões Ativas</h3>
+                                    <p class="settings__option-description">Gerencie dispositivos conectados à sua conta</p>
+                                </div>
+                                <button class="button button--secondary button--sm">
+                                    <span class="button__text">Ver Sessões</span>
+                                </button>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Histórico de Login</h3>
+                                    <p class="settings__option-description">Visualize tentativas de acesso à sua conta</p>
+                                </div>
+                                <button class="button button--secondary button--sm">
+                                    <span class="button__text">Ver Histórico</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dados e Armazenamento -->
+                    <div class="settings__section">
+                        <h2 class="settings__section-title">
+                            <span class="settings__section-icon">💾</span>
+                            Dados e Armazenamento
+                        </h2>
+                        <div class="settings__options">
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Exportar Dados</h3>
+                                    <p class="settings__option-description">Baixe uma cópia dos seus dados</p>
+                                </div>
+                                <button class="button button--secondary button--sm">
+                                    <span class="button__text">Exportar</span>
+                                </button>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Limpar Cache</h3>
+                                    <p class="settings__option-description">Remova dados temporários armazenados</p>
+                                </div>
+                                <button class="button button--secondary button--sm">
+                                    <span class="button__text">Limpar</span>
+                                </button>
+                            </div>
+
+                            <div class="settings__option">
+                                <div class="settings__option-info">
+                                    <h3 class="settings__option-title">Armazenamento Usado</h3>
+                                    <p class="settings__option-description">0.5 MB de 100 MB utilizados</p>
+                                </div>
+                                <div class="settings__storage">
+                                    <div class="settings__storage-bar">
+                                        <div class="settings__storage-fill" style="width: 0.5%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings__footer">
+                    <div class="settings__info">
+                        <p class="settings__info-text">
+                            <strong>Versão:</strong> 1.0.0
+                        </p>
+                        <p class="settings__info-text">
+                            <strong>Última atualização:</strong> Dezembro 2024
+                        </p>
+                    </div>
+                    <div class="settings__actions">
+                        <button class="button button--secondary">
+                            <span class="button__text">Restaurar Padrões</span>
+                        </button>
+                        <button class="button button--primary" id="saveSettingsBtn">
+                            <span class="button__text">Salvar Configurações</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">© 2024 JVM Launchpad. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/settings.js"></script>
+</body>
+</html>

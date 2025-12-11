@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - JVM Launchpad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Gerencie seu perfil JVM Launchpad">
+    <meta name="theme-color" content="#e63946">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page page--dashboard">
+    <div class="page__background">
+        <div class="page__grid"></div>
+        <div class="page__glow page__glow--top"></div>
+        <div class="page__glow page__glow--bottom"></div>
+    </div>
+
+    <header class="header">
+        <div class="header__container">
+            <a href="/dashboard" class="header__logo">
+                <span class="header__logo-icon">◆</span>
+                <span class="header__logo-text">JVM<span class="header__logo-accent">Launchpad</span></span>
+            </a>
+            <nav class="header__nav">
+                <a href="/dashboard" class="header__link">Dashboard</a>
+                <a href="/profile" class="header__link header__link--primary">Perfil</a>
+                <a href="/settings" class="header__link">Configurações</a>
+                <button class="header__link header__link--logout" id="logoutBtn">Sair</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="profile">
+            <div class="profile__container">
+                <div class="profile__header">
+                    <div class="profile__avatar-wrapper">
+                        <div class="profile__avatar" id="profileAvatar">U</div>
+                        <button class="profile__avatar-edit">
+                            <span>📷</span>
+                        </button>
+                    </div>
+                    <div class="profile__header-info">
+                        <h1 class="profile__title" id="profileName">Usuário</h1>
+                        <p class="profile__subtitle" id="profileEmail">usuario@email.com</p>
+                        <div class="profile__badge">
+                            <span class="profile__badge-dot"></span>
+                            Conta Ativa
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile__content">
+                    <div class="profile__section">
+                        <h2 class="profile__section-title">
+                            <span class="profile__section-icon">👤</span>
+                            Informações Pessoais
+                        </h2>
+                        <form class="form" id="profileForm">
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label class="form__label" for="fullName">Nome Completo</label>
+                                    <div class="form__input-wrapper">
+                                        <span class="form__icon">✏</span>
+                                        <input 
+                                            type="text" 
+                                            id="fullName" 
+                                            name="fullName" 
+                                            class="form__input" 
+                                            placeholder="Seu nome completo"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="form__group">
+                                    <label class="form__label" for="username">Nome de Usuário</label>
+                                    <div class="form__input-wrapper">
+                                        <span class="form__icon">@</span>
+                                        <input 
+                                            type="text" 
+                                            id="username" 
+                                            name="username" 
+                                            class="form__input" 
+                                            placeholder="seuusuario"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form__row">
+                                <div class="form__group">
+                                    <label class="form__label" for="email">Email</label>
+                                    <div class="form__input-wrapper">
+                                        <span class="form__icon">✉</span>
+                                        <input 
+                                            type="email" 
+                                            id="email" 
+                                            name="email" 
+                                            class="form__input" 
+                                            placeholder="seu@email.com"
+                                            required
+                                            disabled
+                                        >
+                                    </div>
+                                    <p class="form__hint">Email não pode ser alterado</p>
+                                </div>
+
+                                <div class="form__group">
+                                    <label class="form__label" for="phone">Telefone</label>
+                                    <div class="form__input-wrapper">
+                                        <span class="form__icon">📱</span>
+                                        <input 
+                                            type="tel" 
+                                            id="phone" 
+                                            name="phone" 
+                                            class="form__input" 
+                                            placeholder="(00) 00000-0000"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form__group">
+                                <label class="form__label" for="bio">Bio</label>
+                                <textarea 
+                                    id="bio" 
+                                    name="bio" 
+                                    class="form__textarea" 
+                                    placeholder="Conte um pouco sobre você..."
+                                    rows="4"
+                                ></textarea>
+                            </div>
+
+                            <div class="form__alert form__alert--error" id="errorAlert" style="display: none;">
+                                <span class="form__alert-icon">⚠</span>
+                                <span class="form__alert-text" id="errorText"></span>
+                            </div>
+
+                            <div class="form__alert form__alert--success" id="successAlert" style="display: none;">
+                                <span class="form__alert-icon">✓</span>
+                                <span class="form__alert-text" id="successText"></span>
+                            </div>
+
+                            <div class="form__actions">
+                                <button type="button" class="button button--secondary" id="cancelBtn">
+                                    <span class="button__text">Cancelar</span>
+                                </button>
+                                <button type="submit" class="button button--primary" id="saveBtn">
+                                    <span class="button__text">Salvar Alterações</span>
+                                    <span class="button__loader" style="display: none;"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="profile__section">
+                        <h2 class="profile__section-title">
+                            <span class="profile__section-icon">🔒</span>
+                            Segurança
+                        </h2>
+                        <div class="profile__security">
+                            <div class="profile__security-item">
+                                <div class="profile__security-info">
+                                    <h3 class="profile__security-title">Alterar Senha</h3>
+                                    <p class="profile__security-description">Recomendamos alterar sua senha regularmente</p>
+                                </div>
+                                <button class="button button--secondary" id="changePasswordBtn">
+                                    <span class="button__text">Alterar</span>
+                                </button>
+                            </div>
+                            <div class="profile__security-item">
+                                <div class="profile__security-info">
+                                    <h3 class="profile__security-title">Autenticação de Dois Fatores</h3>
+                                    <p class="profile__security-description">Adicione uma camada extra de segurança</p>
+                                </div>
+                                <button class="button button--secondary">
+                                    <span class="button__text">Ativar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile__section profile__section--danger">
+                        <h2 class="profile__section-title">
+                            <span class="profile__section-icon">⚠</span>
+                            Zona de Perigo
+                        </h2>
+                        <div class="profile__danger">
+                            <div class="profile__danger-item">
+                                <div class="profile__danger-info">
+                                    <h3 class="profile__danger-title">Desativar Conta</h3>
+                                    <p class="profile__danger-description">Desative temporariamente sua conta</p>
+                                </div>
+                                <button class="button button--danger">
+                                    <span class="button__text">Desativar</span>
+                                </button>
+                            </div>
+                            <div class="profile__danger-item">
+                                <div class="profile__danger-info">
+                                    <h3 class="profile__danger-title">Excluir Conta</h3>
+                                    <p class="profile__danger-description">Exclua permanentemente sua conta e dados</p>
+                                </div>
+                                <button class="button button--danger">
+                                    <span class="button__text">Excluir</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">© 2024 JVM Launchpad. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

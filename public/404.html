@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Página Não Encontrada | JVM Launchpad</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Página não encontrada">
+    <meta name="theme-color" content="#e63946">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page page--error">
+    <div class="page__background">
+        <div class="page__grid"></div>
+        <div class="page__glow page__glow--top"></div>
+        <div class="page__glow page__glow--bottom"></div>
+    </div>
+
+    <header class="header header--minimal">
+        <div class="header__container">
+            <a href="/" class="header__logo">
+                <span class="header__logo-icon">◆</span>
+                <span class="header__logo-text">JVM<span class="header__logo-accent">Launchpad</span></span>
+            </a>
+        </div>
+    </header>
+
+    <main class="main main--centered">
+        <div class="error">
+            <div class="error__content">
+                <div class="error__code">
+                    <span class="error__code-digit error__code-digit--1">4</span>
+                    <span class="error__code-digit error__code-digit--2">0</span>
+                    <span class="error__code-digit error__code-digit--3">4</span>
+                </div>
+
+                <div class="error__glitch" data-text="404">404</div>
+
+                <h1 class="error__title">Página Não Encontrada</h1>
+                
+                <p class="error__message">
+                    A página que você está procurando não existe ou foi movida. 
+                    Verifique o endereço ou volte para a página inicial.
+                </p>
+
+                <div class="error__card">
+                    <div class="error__card-icon">🔍</div>
+                    <p class="error__card-text">
+                        <strong>Erro:</strong> Resource not found<br>
+                        <strong>Status:</strong> 404 Not Found<br>
+                        <strong>Path:</strong> <span id="errorPath">/unknown</span>
+                    </p>
+                </div>
+
+                <div class="error__actions">
+                    <a href="/" class="button button--primary">
+                        <span class="button__text">← Voltar ao Início</span>
+                    </a>
+                    <a href="/dashboard" class="button button--secondary">
+                        <span class="button__text">Ir para Dashboard</span>
+                    </a>
+                </div>
+
+                <div class="error__links">
+                    <a href="/login" class="error__link">Login</a>
+                    <span class="error__link-separator">•</span>
+                    <a href="/register" class="error__link">Cadastro</a>
+                    <span class="error__link-separator">•</span>
+                    <a href="/about" class="error__link">Sobre</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Display current path
+        document.getElementById('errorPath').textContent = window.location.pathname;
+    </script>
+</body>
+</html>
