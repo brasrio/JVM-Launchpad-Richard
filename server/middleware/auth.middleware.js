@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 
+// JWT Secret fixo (mesmo do controller)
+const JWT_SECRET = 'jvm_launchpad_secret_key_2024';
+
 const authMiddleware = (req, res, next) => {
     try {
         // Obter token do header Authorization
@@ -32,7 +35,7 @@ const authMiddleware = (req, res, next) => {
         }
 
         // Verificar e decodificar token
-        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        jwt.verify(token, JWT_SECRET, (err, decoded) => {
             if (err) {
                 return res.status(401).json({
                     success: false,

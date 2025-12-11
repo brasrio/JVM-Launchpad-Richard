@@ -26,6 +26,10 @@ const UserModel = {
             name: userData.name,
             email: userData.email.toLowerCase(),
             password: userData.password, // Já vem hasheada do controller
+            username: userData.username || '',
+            phone: userData.phone || '',
+            bio: userData.bio || '',
+            behaviorProfile: userData.behaviorProfile || '',
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         };
@@ -133,6 +137,14 @@ const UserModel = {
             if (!doc.exists) return false;
 
             await docRef.delete();
+            
+            // Também deletar configurações do usuário
+            try {
+                await db.collection('settings').doc(id).delete();
+            } catch (e) {
+                // Ignorar se não existir
+            }
+            
             return true;
         } else {
             const index = memoryUsers.findIndex(user => user.id === id);
@@ -140,6 +152,65 @@ const UserModel = {
 
             memoryUsers.splice(index, 1);
             return true;
+        }
+    },
+
+    /**
+     * Atualizar senha do usuário
+     */
+    updatePassword: async (id, hashedPassword) => {
+        const updates = {
+            password: hashedPassword,
+            updatedAt: new Date().toISOString()
+        };
+
+        if (isFirebaseAvailable()) {
+            const docRef = db.collection(COLLECTION).doc(id);
+            await docRef.update(updates);
+            return true;
+        } else {
+            const index = memoryUsers.findIndex(user => user.id === id);
+            if (index === -1) return false;
+
+            memoryUsers[index] = { ...memoryUsers[index], ...updates };
+            return true;
+        }
+    },
+
+    /**
+     * Salvar configurações do usuário
+     */
+    updateSettings: async (userId, settings) => {
+        const settingsData = {
+            ...settings,
+            userId,
+            updatedAt: new Date().toISOString()
+        };
+
+        if (isFirebaseAvailable()) {
+            await db.collection('settings').doc(userId).set(settingsData, { merge: true });
+            return settingsData;
+        } else {
+            // Fallback em memória - armazenar no objeto do usuário
+            const index = memoryUsers.findIndex(user => user.id === userId);
+            if (index !== -1) {
+                memoryUsers[index].settings = settingsData;
+            }
+            return settingsData;
+        }
+    },
+
+    /**
+     * Obter configurações do usuário
+     */
+    getSettings: async (userId) => {
+        if (isFirebaseAvailable()) {
+            const doc = await db.collection('settings').doc(userId).get();
+            if (!doc.exists) return null;
+            return doc.data();
+        } else {
+            const user = memoryUsers.find(user => user.id === userId);
+            return user?.settings || null;
         }
     }
 };

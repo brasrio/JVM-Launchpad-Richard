@@ -22,15 +22,23 @@
         get: (key) => {
             try {
                 const item = localStorage.getItem(key);
-                return item ? JSON.parse(item) : null;
+                if (!item) return null;
+                // Token não precisa de parse
+                if (key === CONFIG.TOKEN_KEY) return item;
+                return JSON.parse(item);
             } catch (e) {
-                return null;
+                return localStorage.getItem(key);
             }
         },
         
         set: (key, value) => {
             try {
-                localStorage.setItem(key, JSON.stringify(value));
+                // Token é string simples, não precisa stringify
+                if (key === CONFIG.TOKEN_KEY) {
+                    localStorage.setItem(key, value);
+                } else {
+                    localStorage.setItem(key, JSON.stringify(value));
+                }
             } catch (e) {
                 console.error('Erro ao salvar no storage:', e);
             }

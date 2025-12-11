@@ -1,16 +1,29 @@
-require('dotenv').config();
+const path = require('path');
+
+// Carregar variáveis de ambiente do arquivo .env na raiz do projeto
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
+
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const authRoutes = require('./routes/auth.routes');
+
+// Debug: mostrar se as variáveis foram carregadas (apenas em desenvolvimento)
+if (process.env.NODE_ENV !== 'production') {
+    console.log('🔧 Variáveis de ambiente carregadas:');
+    console.log('   - FIREBASE_PROJECT_ID:', process.env.FIREBASE_PROJECT_ID ? '✅ Configurado' : '❌ Não encontrado');
+    console.log('   - FIREBASE_CLIENT_EMAIL:', process.env.FIREBASE_CLIENT_EMAIL ? '✅ Configurado' : '❌ Não encontrado');
+    console.log('   - FIREBASE_PRIVATE_KEY:', process.env.FIREBASE_PRIVATE_KEY ? '✅ Configurado' : '❌ Não encontrado');
+    console.log('   - JWT_SECRET:', process.env.JWT_SECRET ? '✅ Configurado' : '❌ Não encontrado');
+    console.log('   - EMAIL_USER:', process.env.EMAIL_USER ? '✅ Configurado' : '❌ Não encontrado');
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '1mb' })); // Aumentado para suportar avatar base64
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // Servir arquivos estáticos do frontend
 app.use(express.static(path.join(__dirname, '../public')));

@@ -22,9 +22,12 @@
         get: (key) => {
             try {
                 const item = localStorage.getItem(key);
-                return item ? JSON.parse(item) : null;
+                if (!item) return null;
+                // Token não precisa de parse
+                if (key === CONFIG.TOKEN_KEY) return item;
+                return JSON.parse(item);
             } catch (e) {
-                return null;
+                return localStorage.getItem(key);
             }
         },
         
@@ -98,7 +101,12 @@
         }
         
         if (elements.userAvatar) {
-            elements.userAvatar.textContent = displayName.charAt(0).toUpperCase();
+            // Verificar se tem avatar
+            if (user.avatarUrl) {
+                elements.userAvatar.innerHTML = `<img src="${user.avatarUrl}" alt="Avatar" class="header__avatar-img">`;
+            } else {
+                elements.userAvatar.textContent = displayName.charAt(0).toUpperCase();
+            }
         }
         
         if (elements.dashboardName) {
