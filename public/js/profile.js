@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if user is authenticated
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         return;
     }
 
@@ -26,14 +26,30 @@ function loadUserData() {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     if (user.name) {
-        // Update profile header
-        document.getElementById('profileName').textContent = user.name;
-        document.getElementById('profileEmail').textContent = user.email || '';
+        // Usar dados reais do usuário logado
+        const displayName = user.name;
+        const displayEmail = user.email;
         
-        // Set avatar initial
-        const initial = user.name.charAt(0).toUpperCase();
+        // Update profile header
+        document.getElementById('profileName').textContent = displayName;
+        document.getElementById('profileEmail').textContent = displayEmail || '';
+        
+        // Set avatar initials (primeira letra do nome e sobrenome)
+        const nameParts = displayName.split(' ');
+        const initials = nameParts.length > 1 
+            ? nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)
+            : nameParts[0].substring(0, 2);
+            
         const avatars = document.querySelectorAll('.profile__avatar, #userAvatar');
-        avatars.forEach(avatar => avatar.textContent = initial);
+        avatars.forEach(avatar => avatar.textContent = initials.toUpperCase());
+
+        // Update username link
+        const usernameElement = document.getElementById('profileUsername');
+        if (usernameElement) {
+            const username = user.username || user.name.toLowerCase().replace(/\s+/g, '');
+            usernameElement.textContent = '@' + username;
+            usernameElement.href = '/user/' + username;
+        }
 
         // Populate form fields
         document.getElementById('fullName').value = user.name;
@@ -161,7 +177,7 @@ function setupLogoutHandler() {
             if (confirm('Deseja realmente sair?')) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
-                window.location.href = '/login.html';
+                window.location.href = '/login';
             }
         });
     }

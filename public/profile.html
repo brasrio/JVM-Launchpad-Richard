@@ -42,19 +42,73 @@
     <main class="main">
         <section class="profile">
             <div class="profile__container">
-                <div class="profile__header">
-                    <div class="profile__avatar-wrapper">
-                        <div class="profile__avatar" id="profileAvatar">U</div>
-                        <button class="profile__avatar-edit">
-                            <span>📷</span>
-                        </button>
+                <div class="profile__player-card">
+                    <div class="profile__card-header">
+                        <div class="profile__squad-info">
+                            <span class="profile__squad-label">Squad 1</span>
+                            <span class="profile__link-icon">🔗</span>
+                        </div>
+                        <div class="profile__classification">
+                            <span class="profile__rank">7°</span>
+                            <span class="profile__rank-label">Classificação</span>
+                        </div>
+                        <div class="profile__project">
+                            <span class="profile__project-name">JVM Lauchpad</span>
+                            <span class="profile__project-label">Projeto e squad</span>
+                        </div>
                     </div>
-                    <div class="profile__header-info">
-                        <h1 class="profile__title" id="profileName">Usuário</h1>
-                        <p class="profile__subtitle" id="profileEmail">usuario@email.com</p>
-                        <div class="profile__badge">
-                            <span class="profile__badge-dot"></span>
-                            Conta Ativa
+
+                    <div class="profile__player-info">
+                        <div class="profile__avatar-section">
+                            <div class="profile__avatar-wrapper">
+                                <div class="profile__avatar" id="profileAvatar">LJ</div>
+                                <button class="profile__avatar-edit">
+                                    <span>📷</span>
+                                </button>
+                            </div>
+                            <h1 class="profile__player-name" id="profileName">Usuário</h1>
+                            <a href="#" class="profile__username" id="profileUsername">@usuario</a>
+                        </div>
+
+                        <div class="profile__stats-grid">
+                            <div class="profile__stat">
+                                <div class="profile__stat-value">12</div>
+                                <div class="profile__stat-label">Atividades terminadas</div>
+                            </div>
+                            <div class="profile__stat">
+                                <div class="profile__stat-value">45</div>
+                                <div class="profile__stat-label">Pontos</div>
+                            </div>
+                            <div class="profile__stat">
+                                <div class="profile__stat-value">Júnior 1</div>
+                                <div class="profile__stat-label">Nível</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile__personal-data">
+                        <h2 class="profile__section-title">Dados pessoais</h2>
+                        
+                        <div class="profile__data-grid">
+                            <div class="profile__data-item">
+                                <label class="profile__data-label">Email</label>
+                                <div class="profile__data-value" id="profileEmail">usuario@email.com</div>
+                            </div>
+                            
+                            <div class="profile__data-item">
+                                <label class="profile__data-label">Contato</label>
+                                <div class="profile__data-value">48 999383088</div>
+                            </div>
+                            
+                            <div class="profile__data-item">
+                                <label class="profile__data-label">Perfil comportamental</label>
+                                <div class="profile__data-value">Analítico</div>
+                            </div>
+                            
+                            <div class="profile__data-item">
+                                <label class="profile__data-label">Usuário ativo desde</label>
+                                <div class="profile__data-value">10/12/2025</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,7 +277,7 @@
 
     <footer class="footer">
         <div class="footer__container">
-            <p class="footer__text">© 2024 JVM Launchpad. Todos os direitos reservados.</p>
+            <p class="footer__text">© 2026 JVM Launchpad. Todos os direitos reservados.</p>
         </div>
     </footer>
 

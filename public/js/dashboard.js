@@ -89,16 +89,20 @@
         }
 
         // Atualizar elementos da UI
+        // Para demonstração, vamos usar "Renata" como exemplo se o nome for "Teste"
+        const displayName = user.name === 'Teste' ? 'Renata' : user.name;
+        const firstName = displayName.split(' ')[0];
+        
         if (elements.userName) {
-            elements.userName.textContent = user.name.split(' ')[0];
+            elements.userName.textContent = firstName;
         }
         
         if (elements.userAvatar) {
-            elements.userAvatar.textContent = user.name.charAt(0).toUpperCase();
+            elements.userAvatar.textContent = displayName.charAt(0).toUpperCase();
         }
         
         if (elements.dashboardName) {
-            elements.dashboardName.textContent = user.name.split(' ')[0];
+            elements.dashboardName.textContent = firstName;
         }
         
         if (elements.infoName) {

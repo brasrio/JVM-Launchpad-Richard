@@ -63,6 +63,16 @@ app.get('/404', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/404.html'));
 });
 
+// Middleware para remover .html das URLs se presente
+app.use((req, res, next) => {
+    if (req.path.endsWith('.html') && req.path !== '/404.html') {
+        const newPath = req.path.slice(0, -5); // Remove .html
+        res.redirect(301, newPath);
+    } else {
+        next();
+    }
+});
+
 // Rota catch-all para páginas não encontradas
 app.get('*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, '../public/404.html'));

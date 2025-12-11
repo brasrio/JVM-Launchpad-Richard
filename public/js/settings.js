@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if user is authenticated
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         return;
     }
 
@@ -215,7 +215,7 @@ function setupLogoutHandler() {
             if (confirm('Deseja realmente sair?')) {
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
-                window.location.href = '/login.html';
+                window.location.href = '/login';
             }
         });
     }

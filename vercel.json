@@ -12,6 +12,14 @@
   ],
   "routes": [
     {
+      "src": "/assets/(.*\\.svg)",
+      "dest": "/public/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": "image/svg+xml"
+      }
+    },
+    {
       "src": "/assets/(.*\\.png)",
       "dest": "/public/assets/$1",
       "headers": {
@@ -20,11 +28,17 @@
     },
     {
       "src": "/css/(.*)",
-      "dest": "/public/css/$1"
+      "dest": "/public/css/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=2592000"
+      }
     },
     {
       "src": "/js/(.*)",
-      "dest": "/public/js/$1"
+      "dest": "/public/js/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=2592000"
+      }
     },
     {
       "src": "/assets/(.*)",
@@ -35,20 +49,10 @@
       "dest": "/server/server.js"
     },
     {
-      "src": "/login",
-      "dest": "/server/server.js"
-    },
-    {
-      "src": "/register",
-      "dest": "/server/server.js"
-    },
-    {
-      "src": "/dashboard",
-      "dest": "/server/server.js"
-    },
-    {
       "src": "/(.*)",
       "dest": "/server/server.js"
     }
-  ]
-}
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }}
