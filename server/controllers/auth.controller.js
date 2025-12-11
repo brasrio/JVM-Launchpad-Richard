@@ -56,18 +56,18 @@ const AuthController = {
                 { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
             );
 
-            // Enviar email de boas-vindas (não bloqueia a resposta)
-            emailService.sendWelcomeEmail(newUser.email, newUser.name)
-                .then(result => {
-                    if (result.success) {
-                        console.log('✅ Email de boas-vindas enviado para:', newUser.email);
-                    } else {
-                        console.warn('⚠️  Falha ao enviar email de boas-vindas:', result.error);
-                    }
-                })
-                .catch(err => {
-                    console.error('❌ Erro ao enviar email de boas-vindas:', err);
-                });
+            // Enviar email de boas-vindas (aguarda envio em produção/serverless)
+            try {
+                const emailResult = await emailService.sendWelcomeEmail(newUser.email, newUser.name);
+                if (emailResult.success) {
+                    console.log('✅ Email de boas-vindas enviado para:', newUser.email);
+                } else {
+                    console.warn('⚠️  Falha ao enviar email de boas-vindas:', emailResult.error);
+                }
+            } catch (emailErr) {
+                console.error('❌ Erro ao enviar email de boas-vindas:', emailErr);
+                // Não bloqueia o registro se o email falhar
+            }
 
             res.status(201).json({
                 success: true,
